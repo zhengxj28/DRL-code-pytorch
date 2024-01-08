@@ -1,0 +1,1 @@
+nohup python -u PPO_continuous_main.py --use_orthogonal_init >output.log 2>&1 &
