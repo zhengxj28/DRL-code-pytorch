@@ -156,7 +156,7 @@ if __name__ == '__main__':
     parser.add_argument("--use_lr_decay", action='store_true', help="Trick 6:learning rate Decay")
     parser.add_argument("--use_grad_clip", action='store_true', help="Trick 7: Gradient clip")
     parser.add_argument("--use_orthogonal_init", action='store_true', help="Trick 8: orthogonal initialization")
-    parser.add_argument("--set_adam_eps", type=float, default=True, help="Trick 9: set Adam epsilon=1e-5")
+    parser.add_argument("--set_adam_eps", action='store_true', help="Trick 9: set Adam epsilon=1e-5")
     parser.add_argument("--use_tanh", action='store_true', help="Trick 10: tanh activation function")
 
     args = parser.parse_args()
@@ -168,7 +168,7 @@ if __name__ == '__main__':
         notes="",
         group=env_name[env_index],
         name="ppo",
-        config={}
+        config=args.__dict__
     )
     main(args, env_name=env_name[env_index], number=1, seed=0)
     wandb.finish()
